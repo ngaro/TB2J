@@ -20,6 +20,8 @@ fi
 if [ ! -z $1 ] &&  [ $1 = "build" ] ; then
 	cat << ENDOFDOCKERFILE  > Dockerfile
 FROM python:3
+RUN apt-get update && apt-get -y install gfortran
+RUN pip3 install sisl
 RUN pip3 install TB2J
 WORKDIR /root
 ENDOFDOCKERFILE
